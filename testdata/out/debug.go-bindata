@@ -27,7 +27,7 @@ type asset struct {
 func in_a_test_asset() (*asset, error) {
 	path := "/Users/tamird/src/go/src/github.com/jteeuwen/go-bindata/testdata/in/a/test.asset"
 	name := "in/a/test.asset"
-	bytes, err := bindata_read(path, name)
+	ba, err := bindata_read(path, name)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ func in_a_test_asset() (*asset, error) {
 		err = fmt.Errorf("Error reading asset info %s at %s: %v", name, path, err)
 	}
 
-	a := &asset{bytes: bytes, info: fi}
+	a := &asset{bytes: ba, info: fi}
 	return a, err
 }
 

@@ -458,13 +458,13 @@ func asset_release_common(w io.Writer, c *Config, asset *Asset) error {
 		modTime = c.ModTime
 	}
 	_, err = fmt.Fprintf(w, `func %s() (*asset, error) {
-	bytes, err := %sBytes()
+	ba, err := %sBytes()
 	if err != nil {
 		return nil, err
 	}
 
 	info := bindataFileInfo{name: %q, size: %d, mode: os.FileMode(%d), modTime: time.Unix(%d, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: ba, info: info}
 	return a, nil
 }
 

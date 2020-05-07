@@ -127,7 +127,7 @@ func writeDebugAsset(w io.Writer, c *Config, asset *Asset) error {
 func %s() (*asset, error) {
 	path := %s
 	name := %q
-	bytes, err := bindataRead(path, name)
+	ba, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +137,7 @@ func %s() (*asset, error) {
 		err = fmt.Errorf("Error reading asset info %%s at %%s: %%v", name, path, err)
 	}
 
-	a := &asset{bytes: bytes, info: fi}
+	a := &asset{bytes: ba, info: fi}
 	return a, err
 }
 
